@@ -35,8 +35,8 @@ Module.register("MMM-ProfileCarousel", {
           case "ArrowLeft":
             self.navLeft();
             break;
-          case "Space":
-            self.navSelect();
+          default:
+            self.navNone();
             break;          
         }
       }
@@ -70,7 +70,7 @@ Module.register("MMM-ProfileCarousel", {
     this.resetResumeCarouselTimer();
   },
 
-  navSelect: function() {
+  navNone: function() {
     if (this.screensaverActive) {
       this.resetScreensaver();
       this.resetResumeCarouselTimer();

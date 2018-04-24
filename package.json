@@ -1,11 +1,14 @@
 {
-  "name": "mmm-controller",
+  "name": "mmm-profilecarousel",
   "version": "1.0.0",
   "description": "Keyboard and IR interface for Magic Mirror",
-  "main": "MMM-Controller.js",
+  "main": "MMM-ProfileCarousel.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jeff Clarke",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "lirc-client": "^2.0.0"
+  }
 }
