@@ -174,8 +174,6 @@ Module.register("MMM-ProfileCarousel", {
       //check to see if the time is outside the range
       if (hourNow < this.config.screensaverBlackoutPeriod.start || hourNow >= this.config.screensaverBlackoutPeriod.end) {
 
-        this.stopCarousel();
-        this.startCarousel();
         this.startScreensaverTimer();
         this.screensaverBlackoutPeriodActive = false;
       }
@@ -185,7 +183,9 @@ Module.register("MMM-ProfileCarousel", {
 
         this.stopScreensaver();
         this.screensaverBlackoutPeriodActive = true;
-
+        this.stopCarousel();
+        this.startCarousel();
+        
       }
 
     }   
