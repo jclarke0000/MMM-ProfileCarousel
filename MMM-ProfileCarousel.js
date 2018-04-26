@@ -7,7 +7,8 @@ Module.register("MMM-ProfileCarousel", {
     keyInputIgnoreDelay: 1500,
     useScreensaver: true,
     screensaverProfile: "L_WORDCLOCK",
-    screensaverTimeout: 10.25 * 60 * 1000 //10m 15s
+    screensaverTimeout: 10.25 * 60 * 1000, //10m 15s
+    startupDelay: 1 * 60 * 1000 // 1 minute, gives all modules a chance to render before starting the carousel
   },
 
   currentProfile: 0,
@@ -42,16 +43,21 @@ Module.register("MMM-ProfileCarousel", {
       }
     });
 
-    this.startCarousel();
+    window.setTimeout(function() {
+      
+      self.startCarousel();
 
-    if (this.config.useScreensaver) {
-      this.startScreensaverTimer();
+      if (self.config.useScreensaver) {
+        self.startScreensaverTimer();
 
-      if (this.config.screensaverBlackoutPeriod) {      
-        this.startScreensaverBlackoutHeartbeat();
+        if (self.config.screensaverBlackoutPeriod) {      
+          self.startScreensaverBlackoutHeartbeat();
+        }
+
       }
 
-    }
+    }, this.config.startupDelay);
+
 
   },
 
@@ -185,7 +191,7 @@ Module.register("MMM-ProfileCarousel", {
         this.screensaverBlackoutPeriodActive = true;
         this.stopCarousel();
         this.startCarousel();
-        
+
       }
 
     }   
